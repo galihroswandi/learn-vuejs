@@ -1,15 +1,13 @@
 <template>
-  <!-- v-once artinya render satu kali jadi ketika ada perubahan komponent ini tidak akan dirender ulang -->
-  <h1 v-once>Tulisan {{ message }}</h1>
-
-  <button @click="message = 'Updated !!'">Update !!</button>
+  <div v-html="message"></div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      message: "Dirender ulang",
+      message:
+        "<span style='color: blue; font-size: 5rem;'>Dirender ulang</span>",
     };
   },
 };
