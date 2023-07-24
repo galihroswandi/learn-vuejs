@@ -1,15 +1,24 @@
 <template>
-  <h1>{{ message }}</h1>
-
-  <a :title="message">Hover Me 3 Second</a>
+  <div class="wrapper" style="display: flex; align-items: center; gap: 1rem">
+    <button @click="minCount">-</button>
+    <h1>{{ count }}</h1>
+    <button @click="count++">+</button>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      message: "Hi, World!",
+      count: 0,
     };
+  },
+  methods: {
+    minCount() {
+      if (this.count > 0) {
+        this.count--;
+      }
+    },
   },
 };
 </script>
