@@ -1,18 +1,51 @@
 <template>
-  <h1>Ini adalah parent component</h1>
+  <h1 id="rerender">Tulisan {{ message }}</h1>
 
-  <ChildComponent v-for="(todo, index) in todos" :key="index" :text="todo" />
+  <button @click="message = 'Update !!'">Update !!</button>
 </template>
 
 <script>
-import ChildComponent from "./components/ChildComponent.vue";
 export default {
   data() {
     return {
-      text: "ini component kedua.",
-      todos: ["pertama", "kedua", "ketiga"],
+      message: "Dirender ulang",
     };
   },
-  components: { ChildComponent },
+  beforeCreate() {
+    console.log("Before created");
+  },
+  created() {
+    console.log("Created");
+    console.log({ message: this.message });
+    console.log({ component: document.getElementById("rerender") });
+  },
+  beforeMount() {
+    console.log("Before mounted");
+  },
+  mounted() {
+    console.log("Mounted");
+    console.log({ message: this.message });
+    console.log({ component: document.getElementById("rerender") });
+  },
+  beforeUpdate() {
+    console.log("Before updated");
+    console.log({ message: this.message });
+    console.log({
+      textContent: document.getElementById("rerender").textContent,
+    });
+  },
+  updated() {
+    console.log("Updated");
+    console.log({ message: this.message });
+    console.log({
+      textContent: document.getElementById("rerender").textContent,
+    });
+  },
+  beforeUnmount() {
+    console.log("Before unmounted");
+  },
+  unmounted() {
+    console.log("Unmounted");
+  },
 };
 </script>
