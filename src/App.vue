@@ -1,24 +1,22 @@
 <template>
-  <h1 v-if="status">INI TAMPIL</h1>
-
-  <button @click="setStatus">
-    <span v-if="!status">Tampilkan Text</span>
-    <span v-else-if="status">Hide Text</span>
-    <span v-else>Else Text</span>
-  </button>
+  <ul>
+    <li v-for="(todo, index) in todos" :key="todo.id">
+      {{ index + 1 + " - " + todo.activity }}
+    </li>
+  </ul>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      status: false,
+      todos: [
+        { id: 1, activity: "Olahraga" },
+        { id: 2, activity: "Masak" },
+        { id: 3, activity: "Mandi" },
+        { id: 4, activity: "Makan" },
+      ],
     };
-  },
-  methods: {
-    setStatus() {
-      this.status = !this.status;
-    },
   },
 };
 </script>
