@@ -1,18 +1,24 @@
 <template>
-  <h1>{{ message }}</h1>
+  <h1 v-if="status">INI TAMPIL</h1>
 
-  <input v-model="message" type="text" />
-
-  <!-- v-model kependekan dari : -->
-  <input type="text" :value="message" @input="message = $event.target.value" />
+  <button @click="setStatus">
+    <span v-if="!status">Tampilkan Text</span>
+    <span v-else-if="status">Hide Text</span>
+    <span v-else>Else Text</span>
+  </button>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      message: "say hi",
+      status: false,
     };
+  },
+  methods: {
+    setStatus() {
+      this.status = !this.status;
+    },
   },
 };
 </script>
