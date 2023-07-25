@@ -1,12 +1,8 @@
 <template>
   <Child>
-    <main>
-      <p>Children 1</p>
-      <p>Children 2</p>
-      <p>Children 3</p>
-      <p>Children 4</p>
-      <p>Children 5</p>
-    </main>
+    <template v-slot:default>This is header</template>
+    <template v-slot:main>This is main content</template>
+    <template v-slot:footer>This is footer</template>
   </Child>
 </template>
 
