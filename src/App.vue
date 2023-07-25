@@ -1,5 +1,5 @@
 <template>
-  <child-component />
+  <child-component message="This is message" :number="500" />
 </template>
 
 <script>
