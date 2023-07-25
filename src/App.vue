@@ -1,21 +1,18 @@
 <template>
-  <h1>{{ message }}</h1>
-
-  <!-- Cara susah -->
-  <Child :value="message" @update:value-emit="message = $event" />
-
-  <!-- Cara gampang -->
-  <!-- <Child v-model="message" /> -->
+  <Child>
+    <main>
+      <p>Children 1</p>
+      <p>Children 2</p>
+      <p>Children 3</p>
+      <p>Children 4</p>
+      <p>Children 5</p>
+    </main>
+  </Child>
 </template>
 
 <script>
 import Child from "./components/ChildComponent.vue";
 export default {
-  data() {
-    return {
-      message: "No Message",
-    };
-  },
   components: {
     Child,
   },
