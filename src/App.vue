@@ -1,18 +1,14 @@
 <template>
-  <pre>{{ $data }}</pre>
+  <teleport to="#target-teleport">
+    <app-home />
+  </teleport>
 </template>
 
 <script>
-import basic from "./mixins/basic";
-import merge from "./mixins/merge";
+import HomeComp from "./components/Home.vue";
 
 export default {
-  mixins: [basic, merge],
-  data() {
-    return {
-      name: "Jhon Doe",
-    };
-  },
+  components: { "app-home": HomeComp },
 };
 </script>
 
