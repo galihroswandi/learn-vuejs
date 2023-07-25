@@ -1,8 +1,8 @@
 <template>
   <Child>
-    <template v-slot:default>This is header</template>
-    <template v-slot:main>This is main content</template>
-    <template v-slot:footer>This is footer</template>
+    <template v-slot:default="{ data }">Header : {{ data }}</template>
+    <template v-slot:main="{ data }">Content : {{ data }}</template>
+    <template v-slot:footer="{ data }">Footer : {{ data }}</template>
   </Child>
 </template>
 
