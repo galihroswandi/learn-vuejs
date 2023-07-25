@@ -1,9 +1,15 @@
 <template>
-  <child-component message="This is message" :number="500" />
+  <app-child-1 />
 </template>
 
 <script>
-export default {};
+import Child1 from "./components/ChildComponent1.vue";
+export default {
+  components: { "app-child-1": Child1 },
+  provide: {
+    author: "Jhon Doe",
+  },
+};
 </script>
 
 <style>
