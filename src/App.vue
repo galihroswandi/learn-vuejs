@@ -1,36 +1,17 @@
 <template>
-  <nav>
-    <button v-for="(tab, index) in tabs" :key="index" @click="currentTab = tab">
-      {{ tab }}
-    </button>
-  </nav>
-
-  <KeepAlive>
-    <component :is="currenTabComponent" />
-  </KeepAlive>
+  <pre>{{ $data }}</pre>
 </template>
 
 <script>
-import home from "./components/Home.vue";
-import about from "./components/About.vue";
-import post from "./components/Post.vue";
+import basic from "./mixins/basic";
+import merge from "./mixins/merge";
 
 export default {
-  components: {
-    home,
-    post,
-    about,
-  },
+  mixins: [basic, merge],
   data() {
     return {
-      currentTab: "Home",
-      tabs: ["Home", "Post", "About"],
+      name: "Jhon Doe",
     };
-  },
-  computed: {
-    currenTabComponent() {
-      return this.currentTab.toLowerCase();
-    },
   },
 };
 </script>
