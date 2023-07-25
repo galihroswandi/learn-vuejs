@@ -1,8 +1,10 @@
 <template>
-  <div>{{ total }}</div>
+  <div>{{ discount }}</div>
 
   <input v-model="num1" type="number" />
   <input v-model="num2" type="number" />
+
+  <button @click="addDiscount">+ Dicount</button>
 </template>
 
 <script>
@@ -14,12 +16,19 @@ export default {
     };
   },
   computed: {
-    total() {
-      if (this.num1 > this.num2) {
-        return "Number 1 lebih besar dari Number 2";
-      } else {
-        return "Number 1 lebih kecil dari Number 2";
-      }
+    discount: {
+      get() {
+        return parseInt(this.num1) + parseInt(this.num2);
+      },
+      set(value) {
+        this.num1 -= value;
+        this.num2 -= value;
+      },
+    },
+  },
+  methods: {
+    addDiscount() {
+      this.discount = 200;
     },
   },
 };
