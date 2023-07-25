@@ -1,18 +1,9 @@
 <template>
-  <Child>
-    <template v-slot:default="{ data }">Header : {{ data }}</template>
-    <template v-slot:main="{ data }">Content : {{ data }}</template>
-    <template v-slot:footer="{ data }">Footer : {{ data }}</template>
-  </Child>
+  <child-component />
 </template>
 
 <script>
-import Child from "./components/ChildComponent.vue";
-export default {
-  components: {
-    Child,
-  },
-};
+export default {};
 </script>
 
 <style>

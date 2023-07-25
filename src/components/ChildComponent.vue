@@ -1,20 +1,7 @@
 <template>
-  <header>Header</header>
-  <slot :data="title" />
-  <main>Kontent</main>
-  <slot name="main" :data="content" />
-  <footer>Footer</footer>
-  <slot name="footer" :data="footer" />
+  <h1>Child Component</h1>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      title: "This is title",
-      content: "This is content",
-      footer: "This is footer",
-    };
-  },
-};
+export default {};
 </script>
