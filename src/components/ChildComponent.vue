@@ -1,13 +1,23 @@
 <template>
-  <input
-    type="text"
-    :value="value"
-    @input="$emit('update:value-emit', $event.target.value)"
-  />
+  <input type="text" v-model="value" />
 </template>
 
 <script>
 export default {
-  props: ["value"],
+  props: {
+    value: {
+      type: String,
+    },
+  },
+  computed: {
+    value: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.$emit("update:value-emit", value);
+      },
+    },
+  },
 };
 </script>
