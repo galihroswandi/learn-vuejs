@@ -1,20 +1,23 @@
 <template>
-  <Child @child-clicked="clickMe" ref="childClicked" />
+  <h1>{{ message }}</h1>
 
-  <button @click="onClick">Button from parent</button>
+  <!-- Cara susah -->
+  <Child :value="message" @update:value-emit="message = $event" />
+
+  <!-- Cara gampang -->
+  <!-- <Child v-model="message" /> -->
 </template>
 
 <script>
 import Child from "./components/ChildComponent.vue";
 export default {
-  components: { Child },
-  methods: {
-    clickMe() {
-      console.log("click from child");
-    },
-    onClick() {
-      this.$refs.childClicked.onParentClick();
-    },
+  data() {
+    return {
+      message: "No Message",
+    };
+  },
+  components: {
+    Child,
   },
 };
 </script>

@@ -1,19 +1,13 @@
 <template>
-  <h1>Ini Child Component</h1>
-
-  <button @click="onPress">Click Me</button>
+  <input
+    type="text"
+    :value="value"
+    @input="$emit('update:value-emit', $event.target.value)"
+  />
 </template>
 
 <script>
 export default {
-  emits: ["child-clicked"],
-  methods: {
-    onPress() {
-      this.$emit("child-clicked");
-    },
-    onParentClick() {
-      console.log("click dari parent");
-    },
-  },
+  props: ["value"],
 };
 </script>
