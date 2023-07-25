@@ -1,31 +1,26 @@
 <template>
-  <h1>My Todos</h1>
-  <ul v-if="todos">
-    <li v-for="todo in todos">
-      {{ todo.title }} - {{ todo.completed ? "completed" : "not completed" }}
-    </li>
-  </ul>
-  <div>
-    <input type="text" v-model="title" />
-    <button @click="addTodo">+ Todo</button>
-  </div>
+  <Child @child-clicked="clickMe" ref="childClicked" />
+
+  <button @click="onClick">Button from parent</button>
 </template>
 
 <script>
+import Child from "./components/ChildComponent.vue";
 export default {
-  data() {
-    return {
-      todos: [],
-      title: "",
-    };
-  },
+  components: { Child },
   methods: {
-    addTodo() {
-      this.todos.push({
-        title: this.title,
-        completed: false,
-      });
+    clickMe() {
+      console.log("click from child");
+    },
+    onClick() {
+      this.$refs.childClicked.onParentClick();
     },
   },
 };
 </script>
+
+<style>
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+</style>
