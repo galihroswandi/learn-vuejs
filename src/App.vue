@@ -1,36 +1,31 @@
 <template>
-  <h1 :class="status ? 'success' : 'failed'">STATUS</h1>
-
-  <button @click="status = !status">Change Status !</button>
-
-  <h1 :class="[greenClass, boldClass]">MULTIPLE CLASS</h1>
+  <h1>My Todos</h1>
+  <ul v-if="todos">
+    <li v-for="todo in todos">
+      {{ todo.title }} - {{ todo.completed ? "completed" : "not completed" }}
+    </li>
+  </ul>
+  <div>
+    <input type="text" v-model="title" />
+    <button @click="addTodo">+ Todo</button>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      status: true,
-      greenClass: "success",
-      boldClass: "bold",
+      todos: [],
+      title: "",
     };
+  },
+  methods: {
+    addTodo() {
+      this.todos.push({
+        title: this.title,
+        completed: false,
+      });
+    },
   },
 };
 </script>
-
-<style>
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-.success {
-  color: green;
-  transition: all 0.5s ease-in-out;
-}
-.failed {
-  color: red;
-  transition: all 0.5s ease-in-out;
-}
-.bold {
-  font-weight: 700;
-}
-</style>
