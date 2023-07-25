@@ -1,13 +1,36 @@
 <template>
-  <app-child-1 />
+  <nav>
+    <button v-for="(tab, index) in tabs" :key="index" @click="currentTab = tab">
+      {{ tab }}
+    </button>
+  </nav>
+
+  <KeepAlive>
+    <component :is="currenTabComponent" />
+  </KeepAlive>
 </template>
 
 <script>
-import Child1 from "./components/ChildComponent1.vue";
+import home from "./components/Home.vue";
+import about from "./components/About.vue";
+import post from "./components/Post.vue";
+
 export default {
-  components: { "app-child-1": Child1 },
-  provide: {
-    author: "Jhon Doe",
+  components: {
+    home,
+    post,
+    about,
+  },
+  data() {
+    return {
+      currentTab: "Home",
+      tabs: ["Home", "Post", "About"],
+    };
+  },
+  computed: {
+    currenTabComponent() {
+      return this.currentTab.toLowerCase();
+    },
   },
 };
 </script>
