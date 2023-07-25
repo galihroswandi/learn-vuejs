@@ -1,20 +1,36 @@
 <template>
-  <div>{{ message }}</div>
+  <h1 :class="status ? 'success' : 'failed'">STATUS</h1>
 
-  <input v-model="message" type="text" />
+  <button @click="status = !status">Change Status !</button>
+
+  <h1 :class="[greenClass, boldClass]">MULTIPLE CLASS</h1>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      message: "Hello Vue 3!",
+      status: true,
+      greenClass: "success",
+      boldClass: "bold",
     };
-  },
-  watch: {
-    message(value) {
-      console.log({ perubahanDiMessage: value });
-    },
   },
 };
 </script>
+
+<style>
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.success {
+  color: green;
+  transition: all 0.5s ease-in-out;
+}
+.failed {
+  color: red;
+  transition: all 0.5s ease-in-out;
+}
+.bold {
+  font-weight: 700;
+}
+</style>
