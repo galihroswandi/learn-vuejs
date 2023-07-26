@@ -1,21 +1,25 @@
 <template>
   <div class="p-5">
-    <h1 class="text-4xl">{{ message }}</h1>
+    <h1 class="text-4xl">Name : {{ user.name }}</h1>
+    <p class="text-xl">Age : {{ user.age }}</p>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 
 export default {
   setup() {
-    const message = ref("Hello Jhon Doe");
+    const user = reactive({
+      name: "Jhon Doe",
+      age: 25,
+    });
 
     setTimeout(() => {
-      message.value = "Hello John Doe";
+      user.name = "JHON";
     }, 2000);
 
-    return { message };
+    return { user };
   },
 };
 </script>
