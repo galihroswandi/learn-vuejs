@@ -8,12 +8,13 @@
 </template>
 
 <script>
-import { ref, reactive, toRefs, computed } from "vue";
+import { ref, reactive, toRefs, watchEffect, computed } from "vue";
 
 export default {
   setup() {
     const count = reactive({
       nilai: 0,
+      foo: "bar",
     });
 
     const addNum = ref(1);
@@ -24,6 +25,21 @@ export default {
         addNum.value = newVal;
       },
     });
+
+    watchEffect(
+      () => {
+        console.log(count.nilai);
+      },
+      {
+        flush: "post",
+        onTrigger(e) {
+          console.log({ onTrigger: e });
+        },
+        onTrack(e) {
+          console.log({ onTrack: e });
+        },
+      }
+    );
 
     const add = () => {
       result.value = 5;
