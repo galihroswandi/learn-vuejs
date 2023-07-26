@@ -1,12 +1,12 @@
 <template>
   <div class="p-5">
-    <h1 class="text-4xl">Name : {{ user.name }}</h1>
-    <p class="text-xl">Age : {{ user.age }}</p>
+    <h1 class="text-4xl">Name : {{ name }}</h1>
+    <p class="text-xl">Age : {{ age }}</p>
   </div>
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, reactive, toRefs } from "vue";
 
 export default {
   setup() {
@@ -19,7 +19,7 @@ export default {
       user.name = "JHON";
     }, 2000);
 
-    return { user };
+    return { ...toRefs(user) }; //! Fungsi toRefs untuk mengeluarkan property object menjadi ref masing masing
   },
 };
 </script>
