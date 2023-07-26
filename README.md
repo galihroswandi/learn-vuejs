@@ -41,9 +41,9 @@ Learn how to communicate with servers and perform HTTP requests in Vue.js. -->
 
 At this level, try applying your knowledge in some simple add-on projects. Some project ideas could include:
 
-### Screenshot
+### Simple Todo App
 
-![](./github/project-todo.png)
+![](./github/Project-todo.png)
 
 
 ## Personal note
