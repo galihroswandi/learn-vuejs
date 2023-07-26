@@ -18,9 +18,15 @@ export default {
 
     const addNum = ref(1);
 
-    const result = computed(() => count.nilai + addNum.value);
+    const result = computed({
+      get: () => count.nilai + addNum.value,
+      set: (newVal) => {
+        addNum.value = newVal;
+      },
+    });
 
     const add = () => {
+      result.value = 5;
       count.nilai++;
     };
 
