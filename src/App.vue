@@ -5,7 +5,7 @@
 <script>
 import {
   onBeforeMount,
-  onMouted,
+  onMounted,
   onBeforeUpdate,
   onUpdated,
   onBeforeUnmount,
