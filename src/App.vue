@@ -2,13 +2,11 @@
   <div class="p-5">
     <h4>{{ nilai }}</h4>
     <button @click="add">Add</button>
-
-    <h4>Result: {{ result }}</h4>
   </div>
 </template>
 
 <script>
-import { ref, reactive, toRefs, watchEffect, computed } from "vue";
+import { reactive, toRefs, ref, watch } from "vue";
 
 export default {
   setup() {
@@ -17,36 +15,30 @@ export default {
       foo: "bar",
     });
 
-    const addNum = ref(1);
+    const num1 = ref(1);
+    const num2 = ref(2);
 
-    const result = computed({
-      get: () => count.nilai + addNum.value,
-      set: (newVal) => {
-        addNum.value = newVal;
-      },
+    const add = () => {
+      count.nilai++;
+      num1.value++;
+      num2.value++;
+    };
+
+    watch([num1, num2], (current, before) => {
+      console.log(num1.value);
+      console.log(current);
+      console.log(before);
     });
 
-    watchEffect(
-      () => {
-        console.log(count.nilai);
-      },
-      {
-        flush: "post",
-        onTrigger(e) {
-          console.log({ onTrigger: e });
-        },
-        onTrack(e) {
-          console.log({ onTrack: e });
-        },
+    watch(
+      () => count.nilai,
+      (current, before) => {
+        console.log({ current });
+        console.log({ before });
       }
     );
 
-    const add = () => {
-      result.value = 5;
-      count.nilai++;
-    };
-
-    return { ...toRefs(count), add, result };
+    return { ...toRefs(count), add };
   },
 };
 </script>
