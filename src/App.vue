@@ -1,7 +1,7 @@
 <template>
   <div class="p-5">
-    <h1 class="text-4xl">Name : {{ name }}</h1>
-    <p class="text-xl">Age : {{ age }}</p>
+    <h4>{{ nilai }}</h4>
+    <button @click="add">Add</button>
   </div>
 </template>
 
@@ -10,16 +10,15 @@ import { ref, reactive, toRefs } from "vue";
 
 export default {
   setup() {
-    const user = reactive({
-      name: "Jhon Doe",
-      age: 25,
+    const count = reactive({
+      nilai: 0,
     });
 
-    setTimeout(() => {
-      user.name = "JHON";
-    }, 2000);
+    const add = () => {
+      count.nilai++;
+    };
 
-    return { ...toRefs(user) }; //! Fungsi toRefs untuk mengeluarkan property object menjadi ref masing masing
+    return { ...toRefs(count), add };
   },
 };
 </script>
